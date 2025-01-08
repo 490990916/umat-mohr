@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECharts 折线图示例</title>
+    <!-- 引入 ECharts -->
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.2/dist/echarts.min.js"></script>
+    <style>
+        #chart-container {
+            width: 800px;
+            height: 600px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    //可视化
+    <div id="chart-container"></div>
+
+    <script>
+        // 数据
+        const data = [
+            [0, 0],
+            [0.001, -7.42679e-7],
+            [0.002, -1.48554e-6],
+            [0.0035, -2.59982e-6],
+            [0.00575, -4.27125e-6],
+            [0.009125, -6.77839e-6],
+            [0.0141875, -1.05391e-5],
+            [0.0217813, -1.61802e-5],
+            [0.0331719, -2.46418e-5],
+            [0.0502578, -3.73342e-5],
+            [0.0758867, -5.63727e-5],
+            [0.11433, -8.49306e-5],
+            [0.171995, -0.000127767],
+            [0.258493, -0.000192022],
+            [0.358493, -0.000266307],
+            [0.458493, -0.000340592],
+            [0.558493, -0.000414876],
+            [0.658493, -0.00048916],
+            [0.758493, -0.000563444],
+            [0.858493, -0.000637727],
+            [0.958493, -0.00071201],
+            [1, -0.000742843]
+        ];
+
+        // 初始化 ECharts 实例
+        const chartDom = document.getElementById('chart-container');
+        const myChart = echarts.init(chartDom);
+
+        // 配置项
+        const option = {
+            title: {
+                text: '折线图示例',
+                left: 'center'
+            },
+            tooltip: {
+                trigger: 'axis',
+                formatter: function (params) {
+                    return `X: ${params[0].value[0].toFixed(6)}<br>Y: ${params[0].value[1].toFixed(6)}`;
+                }
+            },
+            xAxis: {
+                name: 'X轴',
+                type: 'value',
+                min: 0,
+                max: 1
+            },
+            yAxis: {
+                name: 'Y轴',
+                type: 'value'
+            },
+            series: [
+                {
+                    name: '数据',
+                    type: 'line',
+                    data: data,
+                    smooth: true, // 平滑曲线
+                    lineStyle: {
+                        color: '#5470C6',
+                        width: 2
+                    },
+                    symbol: 'circle', // 数据点样式
+                    symbolSize: 6,
+                    itemStyle: {
+                        color: '#5470C6'
+                    }
+                }
+            ]
+        };
+
+        // 渲染图表
+        myChart.setOption(option);
+
+        // 窗口大小变化时调整图表大小
+        window.addEventListener('resize', () => {
+            myChart.resize();
+        });
+    </script>
+</body>
+</html>
