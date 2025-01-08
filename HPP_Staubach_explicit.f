@@ -28,7 +28,7 @@
       integer nprops,ntens,kinc,
      1 ndi,nshr,nstatv,noel,npt,layer,kspt,KSTEP
       
-      real(8) STRESS(NTENS),STATEV(NSTATV),
+      real(8) STRESS(NTENS),STATEV(NSTATV), 
      1 DDSDDE(NTENS,NTENS),DDSDDT(NTENS),DRPLDE(NTENS),
      2 STRAN(NTENS),DSTRAN(NTENS),TIME(2),PREDEF(1),DPRED(1),
      3 PROPS(NPROPS),COORDS(3),DROT(3,3),DFGRD0(3,3),DFGRD1(3,3)
